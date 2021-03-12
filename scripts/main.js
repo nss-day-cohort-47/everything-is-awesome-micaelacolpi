@@ -4,14 +4,6 @@ import { makeLegoList } from './legos/LegoList.js';
 
 const navElement = document.querySelector("nav");
 
-navElement.addEventListener("click", (event) => {
-	if (event.target.id === "showBlue") {
-		filterLegos("Blue")
-	} else if (event.target.id === "showAll") {
-		makeLegoList(useLegos())
-	}
-})
-
 navElement.addEventListener("click", (event) =>{
 	if (event.target.id === "showRed") {
 		filterLegos("Red")
@@ -27,6 +19,27 @@ navElement.addEventListener("click", (event) =>{
 		makeLegoList(useLegos())
 	}
 })
+
+///CLICK EVENTS FOR DROPDOWN///
+navElement.addEventListener("change", (event) =>{
+	console.log(event.target.value)
+	if (event.target.id === "materialSelection") {
+		const filter = event.target.value
+		filterMaterial(filter)
+	} else if (event.target.id === "showAll"){
+		makeLegoList(useLegos())
+	}
+	console.log("you want to see solid legos",makeLegoList )
+})
+
+const filterMaterial = (filter) => {
+	const filterArray = useLegos().filter(singleLego => {
+		if (singleLego.Material.includes(filter)) {
+			return singleLego;
+		}
+	})
+	makeLegoList(filterArray);
+}
 
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
