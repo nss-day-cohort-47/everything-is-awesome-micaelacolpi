@@ -12,6 +12,14 @@ navElement.addEventListener("click", (event) => {
 	}
 })
 
+navElement.addEventListener("click", (event) =>{
+	if (event.target.id === "showRed") {
+		filterLegos("Red")
+	} else if (event.target.id === "showAll"){
+		makeLegoList(useLegos())
+	}
+})
+
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
 		if (singleLego.LegoName.includes(whatFilter)) {
