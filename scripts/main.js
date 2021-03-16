@@ -20,7 +20,7 @@ navElement.addEventListener("click", (event) =>{
 	}
 })
 
-///CLICK EVENTS FOR DROPDOWN///
+///EVENT FOR DROPDOWN///
 navElement.addEventListener("change", (event) =>{
 	console.log(event.target.value)
 	if (event.target.id === "materialSelection") {
@@ -40,6 +40,7 @@ const filterMaterial = (filter) => {
 	})
 	makeLegoList(filterArray);
 }
+//////////////////////////////////////
 
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
